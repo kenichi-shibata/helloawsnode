@@ -3,10 +3,10 @@
 ## Prerequisites
 * Terraform v0.10.4
 * Packer v1.0.0
-* awscli
+* aws-cli/1.11.147
   1. via os package manager
-  2. via pip (pip install python [recursive acronym]) 
-* Docker 
+  2. via pip3 
+* Docker 17.06. 
   
 ## Local Development 
 Vagrant
