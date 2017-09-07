@@ -1,7 +1,7 @@
 
 #Pre tag to append to all resources
 variable "pre_tag" {
-  description = "Pre Tag for all the resources"
+  description = "Pre Tag for all the resources can be brand/dept/subdivision environment abbreviation if not prod"
 }
 
 variable "platform_name" {

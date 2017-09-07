@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update -y
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 # install python3 and pip 
 sudo apt-get install -y python3
@@ -35,6 +35,9 @@ sudo apt-get install -y docker-ce
 # install docker compose
 sudo pip3 install --upgrade pip3
 sudo pip3 install docker-compose
+
+# install awscli 
+sudo pip3 install --upgrade awscli
 
 # install nodejs 8.x
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -

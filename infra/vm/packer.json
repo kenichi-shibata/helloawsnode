@@ -1,10 +1,13 @@
 {
+  "variables": {
+     "aws_profile": "{{env `AWS_PROFILE`}}"
+   },
   "builders": [
     {
       "type": "amazon-ebs",
-      "region": "ap-northeast-1",
-      "instance_type": "{{user `instancetype`}}",
-      "ebs_optimized": "{{user `ebsopt`}}",
+      "region": "{{user `aws_region`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ebs_optimized": "{{user `ebs_opt`}}",
       "associate_public_ip_address": "true",
       "ami_name": "{{user `ami_prefix`}}/{{user `version`}}",
       "ssh_username": "ubuntu",
@@ -21,6 +24,7 @@
         "Name": "{{user `ami_prefix`}}-{{user `version`}}-AMI",
         "Env": "{{user `env`}}",
         "BaseOS": "{{user `base_os`}}",
+        "Source": "{{user `repo_url`}}",
         "Components": "{{user `components`}}"
       }
     }
