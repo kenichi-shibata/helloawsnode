@@ -1,5 +1,5 @@
 provider "aws" {
   region = "${var.aws_region}" 
-  profile = "test_builder"
-  shared_credentials_file = "~/.aws/credentials"
+  profile = "test.builder"
+  shared_credentials_file = "${var.aws_credentials}"
 }
