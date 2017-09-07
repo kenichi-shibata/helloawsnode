@@ -1,0 +1,10 @@
+{
+  "ami_prefix": "ubuntu-base-v",
+  "version": "2",
+  "ebsopt": "false",
+  "instancetype": "t2.micro",
+  "env": "Development",
+  "base_os": "Ubuntu",
+  "components": "python3, pip3, docker, docker-compose, git, nodejs"
+}
+
