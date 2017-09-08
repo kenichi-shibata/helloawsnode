@@ -69,10 +69,11 @@
 ## Single Machine Demo
 
 ## Setup AWS Credentials
+`Credentials should be able to create vpc resources and ec2 resources`
+
 * `aws configure --profile test.builder`
    1. `Add Access Key, Secret Key, Region (eu-west-2), Output`(json)
-* alternatively use EC2 instance with Role 
-   1. Should be able to create vpc resources and ec2 resources
+* `alternatively use EC2 instance role with enough permissions `
 
 ## Setup AWS Infrastructure
 * Initialize your VPC, Subnets and its associations (route tables, igw)
