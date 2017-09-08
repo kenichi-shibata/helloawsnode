@@ -39,6 +39,3 @@ variable "key_pair" {
   default = "id_rsa"
 }
 
-variable "aws_credentials" {
-  description = " where is the aws credentials? it should be in ~/.aws/credentials in such a case use full path i.e. /home/username/.aws/credentials"
-}
