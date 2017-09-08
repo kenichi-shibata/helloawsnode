@@ -66,6 +66,8 @@
 * Ability to scale on both infrastructure and container level
 * Resilient against from container level failures to AWS AZ Data Center Failure
 
+## Single Machine Demo
+
 ## Setup AWS Credentials
 * `aws configure --profile test.builder`
    1. `Add Access Key, Secret Key, Region (eu-west-2), Output`(json)
@@ -111,9 +113,9 @@ docker-compose ps # to check
 
 ## Docker Compose
 We are using docker compose ver2.1 since it has better support for single host docker compose ver3 is mainly for swarm mode
-https://github.com/docker/compose/issues/374#issuecomment-285151437
+[ref](https://github.com/docker/compose/issues/374#issuecomment-285151437)
 
-Using ver3 is possible however we would need to fix the startup order ourselves https://docs.docker.com/compose/startup-order/
+Using ver3 is possible however we would need to fix the startup order ourselves [fix for ver3](https://docs.docker.com/compose/startup-order/)
  
 [Further reading](https://github.com/docker/compose/issues/4305)
 
