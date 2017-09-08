@@ -1,18 +1,3 @@
-## ::: Conventions ::: ##
-## Use underscores to concatenate variable names, and dashes for tags     ##
-## Use odd numbers for private subnets and even number for public subnets ##
-## Use terraform.tfvars instead of typing all variables using stdout      ##
-## Create a terrafurm.dummy file to make tfvars                           ##
-## define output into output.tf same with variables, provider             ##
-## separate out resources via aws styled categories                       ##
-## on cases which tf is growing too large separate the files via _ e.g. ec2_instance, ec2_lorem, ec2_ipsum  ##
-
-## ::: Best Practice ::: ##
-## Isolate, lock and share terraform.tfstate using s3 and dynamodb ##
-## Pipeline infra builds into CICD builder like jenkins to make infra build observable ##
-## We can reuse a specific aws region into our business region
-## i.e. Manila Region does not exists so we reuse AWS Tokyo as Manila Business Region
-
 resource "aws_vpc" "platform_vpc" {
   cidr_block = "172.1.0.0/16"
 
