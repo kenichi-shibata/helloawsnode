@@ -1,0 +1,33 @@
+version: '2.1'
+
+services:
+  node-app:
+    build: .
+    image: test
+    networks:
+      - internal
+    expose:
+      - "8080"
+    environment:
+      - VIRTUAL_HOST=local
+    healthcheck: 
+       test: "curl localhost:8080/health"
+       interval: 30s 
+       timeout: 100s
+       retries: 20
+
+  nginx-proxy:
+    depends_on:
+       node-app:
+          condition: service_healthy    
+    image: jwilder/nginx-proxy
+    networks:
+      - internal
+    ports:
+      - "2080:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+networks:
+   internal:
+       driver: bridge
+

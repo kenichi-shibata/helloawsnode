@@ -5,6 +5,12 @@ PORT = process.env.PORT || 30000
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
+  console.log('got req')
+})
+
+app.get('/health', function (req, res) {
+  res.send('Application is healthy')
+  console.log('got a healthcheck req')
 })
 
 app.listen(PORT, function () {
