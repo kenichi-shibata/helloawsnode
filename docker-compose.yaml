@@ -10,6 +10,10 @@ services:
       - "8080"
     environment:
       - VIRTUAL_HOST=local
+    volumes:
+      - ./app:/app
+    entrypoint: 
+      - "/app/entrypoint.sh"
     healthcheck: 
        test: "curl localhost:8080/health"
        interval: 30s 
