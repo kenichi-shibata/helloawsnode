@@ -1,21 +1,21 @@
 #!/bin/bash
-sudo apt-get update -y
-sudo apt-get upgrade -y
 
-# install python3 and pip 
+apt-get update -y || sudo apt-get update -y
+apt-get upgrade -y || sudo apt-get upgrade -y
+
+apt-get install -y sudo  || true
+echo ':::install curl:::'
+sudo apt-get install curl -y
+
+echo ':::install python3 and pip:::'
 sudo apt-get install -y python3
 sudo apt-get install -y python3-setuptools
 sudo easy_install3 pip
 
-# install git
+echo ':::install git:::'
 sudo apt-get install -y git
 
-# install docker
-sudo apt-get install -y \
-    linux-image-extra-$(uname -r) \
-    linux-image-extra-virtual
-sudo apt-get update -y
-
+echo ':::install docker:::'
 sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
@@ -32,16 +32,16 @@ sudo apt-get install -y \
 sudo apt-get update -y
 sudo apt-get install -y docker-ce
 
-# install docker compose
+echo ':::install docker compose:::'
 sudo pip3 install --upgrade pip3
 sudo pip3 install docker-compose
 
-# install awscli 
+echo ':::install awscli:::'
 sudo pip3 install --upgrade awscli
 
-# install nodejs 8.x
+echo ':::install nodejs 8.x:::'
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# clean up 
+echo '::: clean up :::'
 sudo apt-get autoremove -y
