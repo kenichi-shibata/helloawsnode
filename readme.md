@@ -87,6 +87,10 @@ cd hellownode/infra/setup-application
 
 ## Development Mode
 * Use vagrant docker 
+* update /etc/hosts/ `127.0.0.1 local`
+* Test `curl local:80`
+* Watch the logs by `docker-compose logs -f`
+* In another shell `while true ; do curl local:80; sleep 1 ; done`
 
 ## Scale the node-app
 ```

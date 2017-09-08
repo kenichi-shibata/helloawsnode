@@ -3,7 +3,7 @@ version: '2.1'
 services:
   node-app:
     build: .
-    image: test
+    image: hellownode
     networks:
       - internal
     expose:
