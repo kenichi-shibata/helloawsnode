@@ -43,9 +43,10 @@
 ### Features
 
 * Two layers for high availability
-* Auto restarting docker containers
+* Auto restarting docker containers and ec2 instances (via asg)
 * Ability to scale on both infrastructure and container level
 * Resilient against from container level failures to AWS AZ Data Center Failure
+* Two layers of health checks (container and instance level)
 
 ## Single Machine Demo
 
