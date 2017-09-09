@@ -8,6 +8,9 @@ inside_docker() {
 }
 
 case $1 in 
+  start) 
+        sudo vagrant up
+        ;;
   bash)
         sudo docker exec -it helloawsnode-dev-container bash && cd /app
         ;;
