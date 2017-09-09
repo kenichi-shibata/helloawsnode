@@ -104,6 +104,8 @@ cd hellownode/infra/setup-application
 
 > dev is a vagrant default VM machine using docker as provider
 
+> dev VM mounts the entire repo so any changes will be reflected 
+
 ## Scale the node-app
 ```
 docker-compose scale node-app=5
