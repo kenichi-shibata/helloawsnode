@@ -106,6 +106,8 @@ cd hellownode/infra/setup-application
 
 > dev VM mounts the entire repo so any changes will be reflected 
 
+> dev VM also mounts the docker socket so the docker daemon running on the host machine is the same as the one in the VM 
+
 ## Scale the node-app
 ```
 docker-compose scale node-app=5
