@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /app/app 
+cd /helloawsnode/app 
 /usr/bin/npm install
 /usr/bin/npm start

@@ -7,25 +7,45 @@ inside_docker() {
   fi
 }
 
+outside_docker() {
+  if [  -f /.dockerenv ]; then
+    echo "Not outside dev container please execute exit first ";
+    exit 1
+  fi
+}
+
+
 case $1 in 
   start) 
+        outside_docker
         sudo vagrant up
         ;;
   bash)
+        outside_docker
         sudo docker exec -it helloawsnode-dev-container bash && cd /app
         ;;
   up)
         inside_docker
-        sudo docker-compose -f dev-docker-compose.yaml up -d 
+        sudo docker-compose -f dev-docker-compose.yaml up  
+        ;;
+  scale) 
+        inside_docker
+        if [ $# -lt 2 ]
+        then
+          echo "scale needs a number"
+        fi
+        echo "scaling node app to $2"
+        sudo docker-compose -f dev-docker-compose.yaml scale node-app=$2
         ;;
   down) 
         inside_docker
         sudo docker-compose -f dev-docker-compose.yaml down
         ;;
   end) 
+        outside_docker
         sudo vagrant destroy
         ;;
         *)
-            echo $"Usage: $0 {start|bash|up|down|end}"
+            echo $"Usage: $0 {start|bash|up|down|end|scale}"
             exit 1
 esac

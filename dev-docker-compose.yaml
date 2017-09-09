@@ -4,7 +4,6 @@ services:
   node-app:
     build: .
     image: helloawsnode-image
-    restart: always
     networks:
       - internal
     expose:
@@ -14,7 +13,7 @@ services:
     volumes_from:
       - container:helloawsnode-dev-container:rw
     entrypoint: 
-      - "/app/app/entrypoint.sh"
+      - "/helloawsnode/app/entrypoint.sh"
     healthcheck: 
        test: "curl localhost:8080/health"
        interval: 10s 

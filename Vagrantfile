@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.provider "docker" do |d|
     d.build_dir = "."
-    vol = Dir.pwd + ':/app' 
+    vol = Dir.pwd + ':/helloawsnode' 
     d.volumes = [vol, "/var/run/docker.sock:/var/run/docker.sock"]
     d.name = "helloawsnode-dev-container" 
     d.dockerfile = "Dev-Dockerfile"
