@@ -1,0 +1,38 @@
+version: '2.1'
+
+services:
+  node-app:
+    build: .
+    image: helloawsnode-image
+    restart: always
+    networks:
+      - internal
+    expose:
+      - "8080"
+    environment:
+      - VIRTUAL_HOST=local
+    volumes_from:
+      - container:helloawsnode-dev-container:rw
+    entrypoint: 
+      - "/app/app/entrypoint.sh"
+    healthcheck: 
+       test: "curl localhost:8080/health"
+       interval: 10s 
+       timeout: 100s
+       retries: 5
+
+  nginx-proxy:
+    depends_on:
+       node-app:
+          condition: service_healthy    
+    image: jwilder/nginx-proxy
+    restart: always
+    networks:
+      - internal
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+networks:
+   internal:
+       driver: bridge 

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+case $1 in
+  images)
+        sudo docker images -q | xargs sudo docker rmi
+        ;;
+  containers)
+        sudo docker ps -a -q | xargs sudo docker rm
+        ;;
+  both)
+        sudo docker images -q | xargs sudo docker rmi 
+        sudo docker ps -a -q | xargs sudo docker rm
+        ;;
+        *)
+            echo $"Usage: $0 {images|containers|both}"
+            exit 1
+esac

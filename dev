@@ -1,0 +1,29 @@
+#!/bin/bash
+
+inside_docker() {
+  if [ ! -f /.dockerenv ]; then
+    echo "Not inside dev container please execute ./dev bash first";
+    exit 1
+  fi
+}
+
+case $1 in 
+  bash)
+        sudo docker exec -it helloawsnode-dev-container bash && cd /app
+        ;;
+  up)
+        inside_docker
+        sudo docker-compose -f dev-docker-compose.yaml up -d 
+        ;;
+  destroy)
+        inside_docker
+        sudo docker-compose -f dev-docker-compose.yaml down
+        ;;
+  down) 
+        inside_docker
+        sudo docker-compose -f dev-docker-compose.yaml down
+        ;;
+        *)
+            echo $"Usage: $0 {bash|up|destroy|down}"
+            exit 1
+esac
