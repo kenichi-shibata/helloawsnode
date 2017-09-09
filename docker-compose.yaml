@@ -3,7 +3,8 @@ version: '2.1'
 services:
   node-app:
     build: .
-    image: hellownode
+    image: helloawsnode-image
+    restart: always
     networks:
       - internal
     expose:
@@ -11,24 +12,25 @@ services:
     environment:
       - VIRTUAL_HOST=local
     volumes:
-      - ./app:/app
+      - ./:/app
     entrypoint: 
-      - "/app/entrypoint.sh"
+      - "/app/app/entrypoint.sh"
     healthcheck: 
        test: "curl localhost:8080/health"
-       interval: 30s 
+       interval: 10s 
        timeout: 100s
-       retries: 20
+       retries: 5
 
   nginx-proxy:
     depends_on:
        node-app:
           condition: service_healthy    
     image: jwilder/nginx-proxy
+    restart: always
     networks:
       - internal
     ports:
-      - "2080:80"
+      - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 networks:

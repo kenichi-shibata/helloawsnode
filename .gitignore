@@ -61,10 +61,10 @@ typings/
 
 # terraform states
 *.tfstate*
-
-# terraform user defined variabkes
-*.tfvars*
 .terraform
 
 # terraform output file
 out.json
+
+# vagrant machines
+.vagrant
