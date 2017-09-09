@@ -86,11 +86,21 @@ cd hellownode/infra/setup-application
 ```
 
 ## Development Mode
-* Use vagrant docker 
-* update /etc/hosts/ `127.0.0.1 local`
-* Test `curl local:80`
+* Install vagrant
+* `./dev start` start the dev VM
+* `./dev bash` to go inside dev VM
+* `cd /helloawsnode`
+* `./dev up` to start docker compose up inside the docker VM
+* Test `curl localhost:80`
+* `./dev scale 5` to scale the number of helloworld servers to 5
+* `sudo docker ps` to check the running containers
+* `sudo docker-compose ps` to check the single node(instance) cluster
 * Watch the logs by `docker-compose logs -f`
 * In another shell `while true ; do curl local:80; sleep 1 ; done`
+
+> dev uses vagrant for start and end ; uses docker compose for up and down 
+> dev uses dev-docker-compose and Dev-Dockerfile
+> dev is a vagrant default machine using docker as provider
 
 ## Scale the node-app
 ```
@@ -115,3 +125,10 @@ Update the infra/vm/provision.sh as usual then run `docker-compose build` to ref
 Update the code in app normally, since the volume is mounted instead of added the container gets the updates
 
 [Further Reading](https://stackoverflow.com/questions/27735706/docker-add-vs-volume)
+
+## Cleaning up 
+```
+./dev down
+./dev end 
+./clean both
+```
