@@ -99,8 +99,10 @@ cd hellownode/infra/setup-application
 * In another shell `while true ; do curl local:80; sleep 1 ; done`
 
 > dev uses vagrant for start and end ; uses docker compose for up and down 
+
 > dev uses dev-docker-compose and Dev-Dockerfile
-> dev is a vagrant default machine using docker as provider
+
+> dev is a vagrant default VM machine using docker as provider
 
 ## Scale the node-app
 ```
