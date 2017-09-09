@@ -10,7 +10,7 @@ services:
     expose:
       - "8080"
     environment:
-      - VIRTUAL_HOST=local
+      - VIRTUAL_HOST=localhost
     volumes_from:
       - container:helloawsnode-dev-container:rw
     entrypoint: 

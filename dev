@@ -18,15 +18,14 @@ case $1 in
         inside_docker
         sudo docker-compose -f dev-docker-compose.yaml up -d 
         ;;
-  destroy)
-        inside_docker
-        sudo docker-compose -f dev-docker-compose.yaml down
-        ;;
   down) 
         inside_docker
         sudo docker-compose -f dev-docker-compose.yaml down
         ;;
+  end) 
+        sudo vagrant destroy
+        ;;
         *)
-            echo $"Usage: $0 {bash|up|destroy|down}"
+            echo $"Usage: $0 {start|bash|up|down|end}"
             exit 1
 esac

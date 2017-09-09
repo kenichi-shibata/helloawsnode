@@ -15,3 +15,4 @@ case $1 in
             echo $"Usage: $0 {images|containers|both}"
             exit 1
 esac
+# TODO clean volumes and networks

@@ -8,8 +8,7 @@ RUN /usr/bin/wget "https://releases.hashicorp.com/terraform/0.10.4/terraform_0.1
     && /usr/bin/wget "https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_linux_amd64.zip" \
     && /usr/bin/unzip packer_1.0.4_linux_amd64.zip \ 
     && mv packer /usr/bin/packer \
-    && rm /terraform_0.10.4_linux_amd64.zip /packer_1.0.4_linux_amd64.zip \
-    && echo '127.0.0.1 local' >> /etc/hosts
+    && rm /terraform_0.10.4_linux_amd64.zip /packer_1.0.4_linux_amd64.zip 
      
 ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
 
