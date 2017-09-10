@@ -55,5 +55,12 @@
       "type": "shell",
       "script": "infra/vm/deploy.sh"
     }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "ami-out.json",
+      "strip_path": true
+    }
   ]
 }

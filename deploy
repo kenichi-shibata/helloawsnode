@@ -10,19 +10,20 @@ install-dev() {
 case $1 in 
 
   ami) 
-    AWS_PROFILE=test.builder ./packer build -var-file=infra/vm/variables.json infra/vm/packer.json
-     ;;
+    AWS_PROFILE=test.builder packer build -var-file=infra/vm/variables.json infra/vm/packer.json
+    ;;
 
   network)
-   echo 'network'
-   cd infra/setup-cloud-network
-   terraform init
-   terraform plan
-   terraform apply
-   terraform output -json > network-out.json
-   mv network-out.json ../..
-   cd ../.. 
-     ;;
+    echo 'network'
+    cd infra/setup-cloud-network
+    terraform init
+    terraform plan
+    terraform apply
+    terraform output -json > network-out.json
+    mv network-out.json ../..
+    cd ../.. 
+    ;;
+  
    *)
             echo $"Usage: $0 {ami|network|application}"
             exit 1
