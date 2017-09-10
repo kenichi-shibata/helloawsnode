@@ -48,8 +48,6 @@
 * Resilient against from container level failures to AWS AZ Data Center Failure
 * Two layers of health checks (container and instance level)
 
-## Single Machine Demo
-
 ## Setup AWS Credentials
 `Credentials should be able to create vpc resources and ec2 resources`
 
@@ -79,6 +77,9 @@ terraform apply
 # once the infrastructure has been created and there is no error
 terraform output -json > vm/out.json
 ```
+* Setup AMI 
+   1. The AMI is tagged using `infra/vm/variables.json` please update version key to create a new one. AMI does not accept duplicate names
+
 * Setup your application 
 ```
 cd hellownode/infra/setup-application
