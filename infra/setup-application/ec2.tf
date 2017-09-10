@@ -43,7 +43,7 @@ resource "aws_launch_configuration" "as_conf" {
 }
 
 
-resource "aws_autoscaling_group" "bar" {
+resource "aws_autoscaling_group" "helloawsnode_asg" {
   name                     = "helloawsnode-asg"
   max_size                  = 6
   min_size                  = 2
