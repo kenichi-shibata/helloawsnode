@@ -4,6 +4,7 @@ services:
   node-app:
     build: .
     image: helloawsnode-image
+    restart: always
     networks:
       - internal
     expose:
