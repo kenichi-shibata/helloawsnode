@@ -96,8 +96,8 @@ cd hellownode/infra/setup-application
 * `./dev scale 5` to scale the number of helloworld servers to 5
 * `sudo docker ps` to check the running containers
 * `sudo docker-compose ps` to check the single node(instance) cluster
-* Watch the logs by `docker-compose logs -f`
-* In another shell `while true ; do curl local:80; sleep 1 ; done`
+* Watch the logs by `./dev logs`
+* In another shell `./dev test`
 
 > dev uses vagrant for start and end ; uses docker compose for up and down 
 

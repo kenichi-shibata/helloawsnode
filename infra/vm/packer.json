@@ -31,8 +31,29 @@
   ],
   "provisioners": [
     {
+      "type": "shell-local",
+      "command": "mkdir -p upload; tar cf upload/files.tgz app deploy clean Dockerfile docker-compose.yaml  infra readme.md"
+    },
+    {
+      "destination": "/home/ubuntu/helloawsnode",
+      "source": "./upload",
+      "type": "file"
+    },
+    {
       "type": "shell",
-      "script": "provision.sh"
+      "inline": [
+        "cd /home/ubuntu/helloawsnode",
+        "tar xf files.tgz",
+        "rm files.tgz"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "infra/vm/provision.sh"
+    },
+    {
+      "type": "shell",
+      "script": "infra/vm/deploy.sh"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "ami_prefix": "container-ubuntu-base-v",
+  "ami_prefix": "helloawsnode-ubuntu-base-v",
   "version": "1.0",
   "ebs_opt": "false",
   "instance_type": "t2.micro",
@@ -7,6 +7,6 @@
   "base_os": "Ubuntu",
   "components": "python3, pip3, docker, docker-compose, git, nodejs",
   "aws_region": "eu-west-2",
-  "repo_url" : "https://github.com/kenichi-shibata/helloaws"
+  "repo_url" : "https://github.com/kenichi-shibata/helloawsnode"
 }
 
