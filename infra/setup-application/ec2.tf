@@ -28,4 +28,7 @@ resource "aws_launch_configuration" "as_conf" {
   name          = "asg_launch_conf"
   image_id      = "${file("ami-out.file")}"
   instance_type = "t2.micro"
+  security_groups = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_http.id}"]
 }
+
+
