@@ -9,7 +9,7 @@ services:
     expose:
       - "8080"
     environment:
-      - VIRTUAL_HOST=localhost
+      - VIRTUAL_HOST=~.
     volumes:
       - ./:/helloawsnode
     entrypoint: 
