@@ -68,3 +68,6 @@ out.json
 
 # vagrant machines
 .vagrant
+
+# upload packer
+upload/
