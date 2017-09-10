@@ -34,7 +34,7 @@ resource "aws_subnet" "primary_private" {
   vpc_id                  = "${aws_vpc.platform_vpc.id}"
   cidr_block              = "172.1.1.0/24"
   map_public_ip_on_launch = false
-  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags = {
           Name        = "${var.pre_tag}-${var.service_name}-pmry-pvt"
@@ -47,7 +47,7 @@ resource "aws_subnet" "secondary_public" {
   vpc_id                  = "${aws_vpc.platform_vpc.id}"
   cidr_block              = "172.1.2.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
+  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
 
   tags = {
           Name        = "${var.pre_tag}-${var.service_name}-sdry-pub"

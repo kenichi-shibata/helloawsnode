@@ -59,7 +59,6 @@ resource "aws_autoscaling_group" "helloawsnode_asg" {
 # TODO use alb instead for reusability when running multi ports
 resource "aws_elb" "helloawsnode_elb" {
   name               = "helloawsnode-elb"
-  availability_zones = ["${data.aws_availability_zones.available.names[0]}", "${data.aws_availability_zones.available.names[1]}"]
   subnets = ["${file("${path.module}/../../primary-public-out.file")}","${file("${path.module}/../../secondary-public-out.file")}"]
   listener {
     instance_port     = 80
