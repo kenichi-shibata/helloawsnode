@@ -65,7 +65,7 @@ typings/
 
 # terraform output file
 *out.json
-
+*out.file
 # vagrant machines
 .vagrant
 

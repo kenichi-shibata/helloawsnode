@@ -1,16 +1,10 @@
 #!/bin/bash
 
-install-dev() {
-  sudo apt install -y unzip 
-  wget "https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_linux_amd64.zip"
-  unzip packer_1.0.4_linux_amd64.zip
-  rm packer_1.0.4_linux_amd64.zip
-}
-
 case $1 in 
 
   ami) 
     AWS_PROFILE=test.builder packer build -var-file=infra/vm/variables.json infra/vm/packer.json
+    jq -r '.builds[].artifact_id' ami-out.json | awk -F ':' '{print $2}' > ami-out.file
     ;;
 
   network)

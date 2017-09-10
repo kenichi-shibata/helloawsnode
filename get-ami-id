@@ -1,1 +1,0 @@
-jq -r '.builds[].artifact_id' ami-out.json | awk -F ':' '{print $2}'
