@@ -13,18 +13,17 @@ case $1 in
     terraform plan
     terraform apply
     terraform output -json > network-out.json
-    jq -r '.secondary_public_subnet.value' network-out.json > secondary-public-out.file
-    jq -r '.primary_public_subnet.value' network-out.json > primary-public-out.file
-    jq -r '.vpc.value' network-out.json > vpc-out.file
+    echo "secondary_subnet=\"$(jq -r '.secondary_public_subnet.value' network-out.json)\"" > network.tfvars
+    echo "primary_subnet=\"$(jq -r '.primary_public_subnet.value' network-out.json)\"" >> network.tfvars
+    echo "vpc_id=\"$(jq -r '.vpc.value' network-out.json)\"" >> network.tfvars
 
     mv network-out.json ../..
-    mv secondary-public-out.file ../..
-    mv primary-public-out.file ../..
-    mv vpc-out.file ../..
+    mv network.tfvars ../..
     cd ../.. 
     ;;
 
    application) 
+    cat network.tfvars >> infra/setup-application/terraform.tfvars
     cd infra/setup-application 
     terraform init
     terraform plan

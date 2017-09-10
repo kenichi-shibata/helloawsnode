@@ -66,6 +66,7 @@ typings/
 # terraform output file
 *out.json
 *out.file
+*network.tfvars
 # vagrant machines
 .vagrant
 

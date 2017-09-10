@@ -39,3 +39,5 @@ variable "key_pair" {
   default = "id_rsa"
 }
 
+variable "primary_subnet" {}
+variable "secondary_subnet" {}
