@@ -4,7 +4,6 @@ case $1 in
 
   ami) 
     AWS_PROFILE=test.builder packer build -var-file=infra/vm/variables.json infra/vm/packer.json
-    jq -r '.builds[].artifact_id' ami-out.json | awk -F ':' '{print $2}' > ami-out.file
     ;;
 
   network)
@@ -17,7 +16,13 @@ case $1 in
     mv network-out.json ../..
     cd ../.. 
     ;;
-  
+
+   application) 
+    cd infra/setup-application 
+    terraform init
+    terraform plan
+    terraform apply
+    ;;
    *)
             echo $"Usage: $0 {ami|network|application}"
             exit 1

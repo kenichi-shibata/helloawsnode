@@ -18,15 +18,32 @@ resource "aws_security_group" "allow_http" {
   ingress {
     from_port   = 80
     to_port     = 80
-    protocol    = "-1"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
 }
 
+data "aws_ami" "helloawsnode_ami" {
+  most_recent = true
+ # filter {
+ #   name = "image_id" 
+ #   values = ["${file("${path.module}/../../ami-out.file")}"]
+ # }
+  
+  #filter {
+  #  name = "description"
+  #  values = ["test"]
+  #}
+  
+  filter {
+    name = "tag-value"
+    values = ["*helloawsnode*"]
+  }
+}
 resource "aws_launch_configuration" "as_conf" {
   name          = "asg_launch_conf"
-  image_id      = "${file("ami-out.file")}"
+  image_id      = "${data.aws_ami.helloawsnode_ami.image_id}"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_http.id}"]
 }
