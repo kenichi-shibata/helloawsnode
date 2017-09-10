@@ -52,7 +52,7 @@ resource "aws_autoscaling_group" "helloawsnode_asg" {
   desired_capacity          = 2
   force_delete              = true 
   launch_configuration      = "${aws_launch_configuration.as_conf.name}"
-  load_balancers            = ["${aws_elb.helloawsnode_elb.id}"]
+#  load_balancers            = ["${aws_elb.helloawsnode_elb.id}"]
   vpc_zone_identifier       = ["${file("${path.module}/../../primary-public-out.file")}","${file("${path.module}/../../secondary-public-out.file")}"]
 }
 
@@ -60,6 +60,7 @@ resource "aws_autoscaling_group" "helloawsnode_asg" {
 resource "aws_elb" "helloawsnode_elb" {
   name               = "helloawsnode-elb"
   subnets = ["${file("${path.module}/../../primary-public-out.file")}","${file("${path.module}/../../secondary-public-out.file")}"]
+  security_groups = ["${aws_security_group.allow_http.id}"]
   listener {
     instance_port     = 80
     instance_protocol = "http"
