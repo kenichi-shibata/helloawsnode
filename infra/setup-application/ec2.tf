@@ -1,6 +1,7 @@
 resource "aws_security_group" "allow_ssh" {
   name        = "allow-ssh"
   description = "Allow all ssh inbound traffic"
+  vpc_id      = "${file("${path.module}/../../vpc-out.file")}"
 
   ingress {
     from_port   = 22
@@ -14,6 +15,7 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_security_group" "allow_http" {
   name        = "allow-http"
   description = "Allow all http inbound traffic"
+  vpc_id      = "${file("${path.module}/../../vpc-out.file")}"
 
   ingress {
     from_port   = 80
@@ -50,8 +52,8 @@ resource "aws_autoscaling_group" "bar" {
   desired_capacity          = 2
   force_delete              = true 
   launch_configuration      = "${aws_launch_configuration.as_conf.name}"
-  load_balancers            = "${aws_elb.helloawsnode_elb.id}"
-  vpc_zone_identifier       = ["file("$path.module")/../../primary-public-out.file", "file("$path.module")/../../secondary-public-out.file"]
+  load_balancers            = ["${aws_elb.helloawsnode_elb.id}"]
+  vpc_zone_identifier       = ["${file("${path.module}/../../primary-public-out.file")}","${file("${path.module}/../../secondary-public-out.file")}"]
 }
 
 # TODO use alb instead for reusability when running multi ports
