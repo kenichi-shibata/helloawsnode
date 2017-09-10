@@ -26,15 +26,6 @@ resource "aws_security_group" "allow_http" {
 
 data "aws_ami" "helloawsnode_ami" {
   most_recent = true
- # filter {
- #   name = "image_id" 
- #   values = ["${file("${path.module}/../../ami-out.file")}"]
- # }
-  
-  #filter {
-  #  name = "description"
-  #  values = ["test"]
-  #}
   
   filter {
     name = "tag-value"
@@ -46,6 +37,7 @@ resource "aws_launch_configuration" "as_conf" {
   image_id      = "${data.aws_ami.helloawsnode_ami.image_id}"
   instance_type = "t2.micro"
   security_groups = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_http.id}"]
+  associate_public_ip_address = true
 }
 
 
