@@ -38,7 +38,7 @@
 | +-----------------------------------+ |                          |               Docker Containers            |
 |           Docker Containers           |                          +--------------------------------------------+
 +---------------------------------------+                         
-
+              ASG Instance 1                                                        ASG Instance 2
 ```
 
 ### Features
@@ -58,34 +58,13 @@
 
 ## Setup AWS Infrastructure
 * Initialize your VPC, Subnets and its associations (route tables, igw)
-```
-git clone https://github.com/kenichi-shibata/hellownode
-cd hellownode/infra/setup-cloud-network
-./auto
-
-# To manually provision
-# To override the tag names cp terraform.mars terraform.tfvars
-# update the contents of terraform.tfvars
-
-terraform plan
-
-# check the aws resources to be created
-terraform show
-
-# once you are satisfied
-terraform apply
-
-# once the infrastructure has been created and there is no error
-terraform output -json > vm/out.json
-```
+   1. `./deploy network`
 * Setup AMI 
+   1. `./deploy ami`
    1. The AMI is tagged using `infra/vm/variables.json` please update version key to create a new one. AMI does not accept duplicate names
-
 * Setup your application 
-```
-cd hellownode/infra/setup-application
-
-```
+   1. `./deploy application`
+* Done! You now have an ASG running behind an elb with containerized instances of helloawsnode app
 
 ## Development Mode
 * Install vagrant
