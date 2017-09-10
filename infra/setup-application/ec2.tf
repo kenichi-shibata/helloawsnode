@@ -73,8 +73,8 @@ resource "aws_elb" "helloawsnode_elb" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:8000/health"
-    interval            = 30
+    target              = "HTTP:80/health"
+    interval            = 60
   }
 
   cross_zone_load_balancing   = true
