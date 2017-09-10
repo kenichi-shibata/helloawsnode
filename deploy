@@ -13,7 +13,12 @@ case $1 in
     terraform plan
     terraform apply
     terraform output -json > network-out.json
+    jq -r '.secondary_public_subnet.value' network-out.json > secondary-public-out.file
+    jq -r '.primary_public_subnet.value' network-out.json > primary-public-out.file
+
     mv network-out.json ../..
+    mv secondary-public-out.file ../..
+    mv primary-public-out.file ../..
     cd ../.. 
     ;;
 
