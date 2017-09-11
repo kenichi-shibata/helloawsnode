@@ -16,9 +16,8 @@
 
 
 # Build AMI
-## To build the AMI Manually 
-* `cd vm`
-* `./setup.sh build` 
+## To build the AMI  
+* `./deploy ami`
 ## To add dependencies to the AMI
 * update provision.sh
 
