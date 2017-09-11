@@ -70,6 +70,12 @@ resource "aws_autoscaling_group" "helloawsnode_asg" {
   launch_configuration      = "${aws_launch_configuration.as_conf.name}"
   load_balancers            = ["${aws_elb.helloawsnode_elb.id}"]
   vpc_zone_identifier       = ["${var.primary_subnet}", "${var.secondary_subnet}" ]
+  
+  tags  {
+    key    = "Name"
+    value  = "${var.application_name}-asg"
+    propagate_at_launch = true
+  }
 }
 
 # TODO use alb instead for reusability when running multi ports
