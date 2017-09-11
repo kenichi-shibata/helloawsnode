@@ -42,20 +42,21 @@
 
 ### Features
 
-* Two layers for high availability
-* Auto restarting docker containers and ec2 instances (via asg)
+* Two layers of high availability (containers and instances)
+* Auto restarting docker containers (via docker) and ec2 instances (via asg)
 * Ability to scale on both infrastructure and container level
 * Resilient against from container level failures to AWS AZ Data Center Failure
 * Two layers of health checks (container and instance level)
 
-## Setup AWS Credentials
+## Usage
+### Setup AWS Credentials
 `Credentials should be able to create vpc resources and ec2 resources`
 
 * `aws configure --profile test.builder`
    1. `Add Access Key, Secret Key, Region (eu-west-2), Output`(json)
-* `alternatively use EC2 instance role with enough permissions `
+* alternatively use EC2 instance role with enough permissions 
 
-## Setup AWS Infrastructure
+### Setup AWS Infrastructure
 * Initialize your VPC, Subnets and its associations (route tables, igw)
    1. `./deploy network`
 * Setup AMI 
@@ -119,5 +120,10 @@ Update the code in app normally, since the volume is mounted instead of added th
 ./clean both
 ```
 
+## Customizing Tags
+To customize tags, 
+* `infra/setup-cloud-network/terraform.tfvars` update values
+* `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
+* `infra/vm/variable.json` update value
 ## Improvement
-Use modules instea of ${file()} and jq
+Use modules instead of ${var} and jq
