@@ -8,7 +8,6 @@
   2. via pip3 
 * Docker 17.06. 
 * jq
-* awk  
 ## Local Development 
 * Above Prequisites
 * docker-compose version 1.14.0 or above (should support dockercompose file ver2.1)

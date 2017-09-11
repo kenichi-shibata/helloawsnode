@@ -1,6 +1,6 @@
 {
   "ami_prefix": "helloawsnode-ubuntu-base-v",
-  "version": "1.2",
+  "version": "1.4",
   "ebs_opt": "false",
   "instance_type": "t2.micro",
   "env": "Development",

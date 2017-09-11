@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 ADD infra/vm/provision.sh /usr/local/bin/provision.sh
+RUN apt-get update -y || sudo apt-get update -y \
+    && apt-get install sudo -y
 RUN ["/usr/local/bin/provision.sh"]
 RUN sudo apt-get install wget unzip -y 
 RUN /usr/bin/wget "https://releases.hashicorp.com/terraform/0.10.4/terraform_0.10.4_linux_amd64.zip" \
