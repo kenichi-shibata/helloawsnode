@@ -71,4 +71,4 @@ typings/
 .vagrant
 
 # upload packer
-upload/
+*.tgz

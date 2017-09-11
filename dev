@@ -15,9 +15,14 @@ outside_docker() {
 }
 
 install-deb() {
+  sudo apt-get install unzip jq awscli -y
   wget https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
   sudo dpkg -i vagrant_2.0.0_x86_64.deb
   rm vagrant_2.0.0_x86_64.deb
+  wget https://releases.hashicorp.com/terraform/0.10.4/terraform_0.10.4_linux_amd64.zip
+  unzip terraform_0.10.4_linux_amd64.zip
+  sudo  mv terraform /usr/bin/terraform
+  rm terraform_0.10.4_linux_amd64.zip 
 }
 
 detectos() {
@@ -61,7 +66,7 @@ detectarch() {
 }
 
 case $1 in 
-  install) 
+  detect) 
        outside_docker
        detectos
        detectarch
