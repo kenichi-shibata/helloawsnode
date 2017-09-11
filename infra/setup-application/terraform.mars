@@ -1,10 +1,7 @@
-pre_tag=
-platform_name=
-environment=
-service_name=
-business_region=
-instance_type=
-ebs_optimized=
-region=
-key_pair=
-aws_region=eu-west-2
+pre_tag="dev"
+environment="development"
+application_name="helloawsnode"
+business_region="london"
+instance_type="t2.micro"
+aws_region="eu-west-2"
+

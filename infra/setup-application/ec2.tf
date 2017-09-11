@@ -51,7 +51,7 @@ data "aws_ami" "helloawsnode_ami" {
   }
 }
 resource "aws_launch_configuration" "as_conf" {
-  name          = "helloawnode-launch-conf"
+  name          = "${var.application_name}-launch-conf"
   image_id      = "${data.aws_ami.helloawsnode_ami.image_id}"
   instance_type = "${var.instance_type}"
   security_groups = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_http.id}"]
@@ -60,7 +60,7 @@ resource "aws_launch_configuration" "as_conf" {
 
 
 resource "aws_autoscaling_group" "helloawsnode_asg" {
-  name                     = "helloawsnode-asg"
+  name                      ="${var.application_name}-asg"
   max_size                  = 6
   min_size                  = 2
   health_check_grace_period = 300
@@ -73,9 +73,10 @@ resource "aws_autoscaling_group" "helloawsnode_asg" {
 }
 
 # TODO use alb instead for reusability when running multi ports
+
 resource "aws_elb" "helloawsnode_elb" {
-  name               = "helloawsnode-elb"
-  subnets = ["${var.primary_subnet}", "${var.secondary_subnet}" ]
+  name            = "${var.application_name}-elb"
+  subnets         = ["${var.primary_subnet}", "${var.secondary_subnet}" ]
   security_groups = ["${aws_security_group.allow_http.id}"]
   listener {
     instance_port     = 80
@@ -99,6 +100,6 @@ resource "aws_elb" "helloawsnode_elb" {
   connection_draining_timeout = 400
 
   tags {
-    Name = "helloawsnode-elb"
+    Name = "${var.application_name}-elb"
   }
 }

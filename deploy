@@ -22,7 +22,8 @@ case $1 in
     cd ../.. 
     ;;
 
-   application) 
+   application)
+    cat infra/setup-application/terraform.mars > infra/setup-application/terraform.tfvars 
     cat network.tfvars >> infra/setup-application/terraform.tfvars
     cd infra/setup-application 
     terraform init
