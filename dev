@@ -92,7 +92,6 @@ case $1 in
        sudo docker-compose logs -f 
        ;;
   test) 
-       inside_docker 
        while true ; do curl localhost:80; sleep 1 ; done
        ;;
   scale) 

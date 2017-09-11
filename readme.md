@@ -66,6 +66,12 @@
    1. `./deploy application`
 * Done! You now have an ASG running behind an elb with containerized instances of helloawsnode app
 
+## Customizing Tags
+To customize tags,
+* `infra/setup-cloud-network/terraform.tfvars` update values
+* `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
+* `infra/vm/variable.json` update value
+
 ## Development Mode
 * Install vagrant
 * `./dev start` start the dev VM
@@ -88,6 +94,13 @@
 > dev VM mounts the entire repo so any changes will be reflected 
 
 > dev VM also mounts the docker socket so the docker daemon running on the host machine is the same as the one in the VM 
+
+## Cleaning up Dev Mode
+```
+./dev down
+./dev end
+./clean both
+```
 
 ## Scale the node-app
 ```
@@ -113,17 +126,5 @@ Update the code in app normally, since the volume is mounted instead of added th
 
 [Further Reading](https://stackoverflow.com/questions/27735706/docker-add-vs-volume)
 
-## Cleaning up 
-```
-./dev down
-./dev end 
-./clean both
-```
-
-## Customizing Tags
-To customize tags, 
-* `infra/setup-cloud-network/terraform.tfvars` update values
-* `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
-* `infra/vm/variable.json` update value
 ## Improvement
 Use modules instead of ${var} and jq

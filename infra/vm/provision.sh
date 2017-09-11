@@ -1,7 +1,10 @@
 #!/bin/bash
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+apt-get update -y || sudo apt-get update -y || true
+apt-get upgrade -y || sudo apt-get upgrade -y || true
+
+apt-get install -y sudo  || true
+
 echo ':::install curl:::'
 sudo apt-get install curl -y
 
