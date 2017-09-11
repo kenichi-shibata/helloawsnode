@@ -72,6 +72,10 @@ To customize tags,
 * `infra/setup-cloud-network/terraform.tfvars` update values
 * `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
 * `infra/vm/variable.json` update value
+## Cleaning up
+* `./deploy application-destroy`
+* `./deploy network-destroy`
+* Have to delete ami created by packer manually for now
 
 ## Development Mode
 * Install vagrant
@@ -129,3 +133,5 @@ Update the code in app normally, since the volume is mounted instead of added th
 
 ## Improvement
 Use modules instead of ${var} and jq
+
+Reuse vm to docker compose container on ./dev up
