@@ -1,15 +1,8 @@
 
 
-variable "service_name" {
-  description = "name of the service or team or cluster of services"
-}
 
 variable "instance_type"  {
   description = "instance type of the first ec2 instance"
-}
-
-variable "ebs_optimized" {
-  description = "instance status"
 }
 
 variable "aws_region" {
@@ -25,3 +18,4 @@ variable "key_pair" {
 variable "primary_subnet" {}
 variable "secondary_subnet" {}
 variable "vpc_id" {}
+variable "application_name" {}

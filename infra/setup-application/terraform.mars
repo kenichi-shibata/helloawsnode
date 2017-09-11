@@ -1,7 +1,6 @@
 pre_tag="dev"
 environment="development"
 application_name="helloawsnode"
-business_region="london"
 instance_type="t2.micro"
 aws_region="eu-west-2"
 
