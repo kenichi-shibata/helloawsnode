@@ -30,6 +30,17 @@ case $1 in
     terraform plan
     terraform apply
     ;;
+
+   network-destroy)
+     cd infra/setup-cloud-network
+     terraform destroy
+     ;;
+
+   application-destroy)
+     cd infra/setup-application
+     terraform destroy
+     ;;
+
    *)
             echo $"Usage: $0 {ami|network|application}"
             exit 1
