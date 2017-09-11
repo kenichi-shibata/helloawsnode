@@ -66,7 +66,7 @@
 * Setup your application 
    1. `./deploy application`
 * Done! You now have an ASG running behind an elb with containerized instances of helloawsnode app
-
+* Please check the url of your elb; after all instances are healthy you should be able to access the elb url. Elb url is similar to `<http://helloawsnode-elb-1362671146.eu-west-2.elb.amazonaws.com/>`
 ## Customizing Tags
 To customize tags,
 * `infra/setup-cloud-network/terraform.tfvars` update values
