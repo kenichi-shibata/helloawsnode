@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_ssh" {
   name        = "allow-ssh"
   description = "Allow all ssh inbound traffic"
-  vpc_id      = "${file("${path.module}/../../vpc-out.file")}"
+  vpc_id      = "${var.vpc_id}"
 
   ingress {
     from_port   = 22
@@ -15,7 +15,7 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_security_group" "allow_http" {
   name        = "allow-http"
   description = "Allow all http inbound traffic"
-  vpc_id      = "${file("${path.module}/../../vpc-out.file")}"
+  vpc_id      = "${var.vpc_id}"
 
   ingress {
     from_port   = 80
@@ -37,7 +37,7 @@ data "aws_ami" "helloawsnode_ami" {
 resource "aws_launch_configuration" "as_conf" {
   name          = "helloawnode-launch-conf"
   image_id      = "${data.aws_ami.helloawsnode_ami.image_id}"
-  instance_type = "t2.micro"
+  instance_type = "${var.instance_type}"
   security_groups = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_http.id}"]
   associate_public_ip_address = true
 }
