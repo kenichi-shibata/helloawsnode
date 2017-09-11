@@ -23,7 +23,7 @@
 
 # Override Tags
 ## To override tags for network (vpc resources)
-* `cp terraform.mars terraform.tfvars
+* `cp terraform.mars terraform.tfvars`
 * update the terraform.tfvars with desired values
 ## To override tags for ami
 * update the variables.json 
