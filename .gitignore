@@ -74,7 +74,8 @@ typings/
 *.tgz
 
 # ignore auto generated tfvars
-infra/setup-application/terraform.tfvars
+infra/**/terraform.tfvars
+terraform.tfvars
 
 # Ignore packer artifact json
 ami-out.json
@@ -84,3 +85,4 @@ ami-out.json
 
 # Ignore todo 
 todo
+
