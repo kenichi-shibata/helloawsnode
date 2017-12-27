@@ -79,3 +79,8 @@ infra/setup-application/terraform.tfvars
 # Ignore packer artifact json
 ami-out.json
 
+# Ignore terraform plan outputs
+*.plan
+
+# Ignore todo 
+todo
