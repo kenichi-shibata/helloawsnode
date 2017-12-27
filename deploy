@@ -6,42 +6,7 @@ case $1 in
     AWS_PROFILE=test.builder packer build -var-file=infra/vm/variables.json infra/vm/packer.json
     ;;
 
-  network)
-    echo 'network'
-    cd infra/setup-cloud-network
-    terraform init
-    terraform plan
-    terraform apply
-    terraform output -json > network-out.json
-    echo "secondary_subnet=\"$(jq -r '.secondary_public_subnet.value' network-out.json)\"" > network.tfvars
-    echo "primary_subnet=\"$(jq -r '.primary_public_subnet.value' network-out.json)\"" >> network.tfvars
-    echo "vpc_id=\"$(jq -r '.vpc.value' network-out.json)\"" >> network.tfvars
-
-    mv network-out.json ../..
-    mv network.tfvars ../..
-    cd ../.. 
-    ;;
-
-   application)
-    cat infra/setup-application/terraform.mars > infra/setup-application/terraform.tfvars 
-    cat network.tfvars >> infra/setup-application/terraform.tfvars
-    cd infra/setup-application 
-    terraform init
-    terraform plan
-    terraform apply
-    ;;
-
-   network-destroy)
-     cd infra/setup-cloud-network
-     terraform destroy
-     ;;
-
-   application-destroy)
-     cd infra/setup-application
-     terraform destroy
-     ;;
-
    *)
-            echo $"Usage: $0 {ami|network|application}"
+            echo "Usage: $0 {ami}"
             exit 1
 esac
