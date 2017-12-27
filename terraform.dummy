@@ -1,12 +1,9 @@
 pre_tag="dev"
-platform_name=
+platform_name="integration"
 environment="development"
-service_name=
-business_region=
+service_name="helloworld"
+business_region="london"
 instance_type="t2.micro"
-ebs_optimized=
-region=
-key_pair=
-aws_region=eu-west-2
+aws_region="eu-west-2"
 application_name="helloawsnode"
 
