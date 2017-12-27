@@ -75,3 +75,7 @@ typings/
 
 # ignore auto generated tfvars
 infra/setup-application/terraform.tfvars
+
+# Ignore packer artifact json
+ami-out.json
+
