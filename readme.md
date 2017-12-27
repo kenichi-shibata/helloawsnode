@@ -57,16 +57,41 @@
    1. `Add Access Key, Secret Key, Region (eu-west-2), Output`(json)
 * alternatively use EC2 instance role with enough permissions 
 
-### Setup AWS Infrastructure
-* Initialize your VPC, Subnets and its associations (route tables, igw)
-   1. `./deploy network`
-* Setup AMI 
+## Setup Hello World NodeJS App AMI 
    1. `./deploy ami`
    1. The AMI is tagged using `infra/vm/variables.json` please update version key to create a new one. AMI does not accept duplicate names
-* Setup your application 
-   1. `./deploy application`
+   
+### Initialize your terraform modules
+
+    $ terraform get # will get the modules under infra
+    $ terraform init # will get the aws provisioners
+
+### Setup your terraform.tfvars
+
+    $ cp terraform.dummy terraform.tfvars
+    $ # update the terraform.tfvars
+
+### Setup AWS Infrastructure
+
+    $ terraform plan
+
+Check the output of the terraform plan and see if all necessary network
+resources are planned properly. 
+You can also save this plan to a file to make sure that the displayed plan
+will be the one carried out
+
+    $ terraform plan -out helloawsnode.plan
+
+If you haven't created any resources before this you have `Plan: 22 to add, 0
+to change, 0 to destroy.` as your last output before the ending `-----`
+
+To apply changes run
+
+    $ terraform apply "helloawsnode.plan"
+    
 * Done! You now have an ASG running behind an elb with containerized instances of helloawsnode app
 * Please check the url of your elb; after all instances are healthy you should be able to access the elb url. Elb url is similar to `<http://helloawsnode-elb-1362671146.eu-west-2.elb.amazonaws.com/>`
+
 ## Customizing Tags
 To customize tags,
 * `infra/setup-cloud-network/terraform.tfvars` update values
@@ -132,6 +157,6 @@ Update the code in app normally, since the volume is mounted instead of added th
 [Further Reading](https://stackoverflow.com/questions/27735706/docker-add-vs-volume)
 
 ## Improvement
-Use modules instead of ${var} and jq
+* [x] Use modules instead of ${var} and jq
 
-Reuse vm to docker compose container on ./dev up
+* [ ] Reuse vm to docker compose container on ./dev up
