@@ -1,6 +1,3 @@
-
-
-
 variable "instance_type"  {
   description = "instance type of the first ec2 instance"
 }

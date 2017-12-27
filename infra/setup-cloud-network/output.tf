@@ -10,7 +10,7 @@ output "secondary_public_subnet" {
 output "secondary_private_subnet" {
   value = "${aws_subnet.secondary_private.id}"
 }
-output "vpc" {
+output "vpc_id" {
   value = "${aws_vpc.platform_vpc.id}"
 }
 
