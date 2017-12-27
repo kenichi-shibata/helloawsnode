@@ -94,8 +94,7 @@ To apply changes run
 
 ## Customizing Tags
 To customize tags,
-* `infra/setup-cloud-network/terraform.tfvars` update values
-* `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
+* `terraform.tfvars` update the value
 * `infra/vm/variable.json` update value
 ## Cleaning up
 * On the root directory run `terraform destroy`
@@ -157,5 +156,5 @@ Update the code in app normally, since the volume is mounted instead of added th
 
 ## Improvement
 * [x] Use modules instead of ${var} and jq
-
 * [ ] Reuse vm to docker compose container on ./dev up
+
