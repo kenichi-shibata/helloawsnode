@@ -1,6 +1,0 @@
-pre_tag="dev"
-environment="development"
-application_name="helloawsnode"
-instance_type="t2.micro"
-aws_region="eu-west-2"
-
