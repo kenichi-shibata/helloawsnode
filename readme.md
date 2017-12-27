@@ -98,8 +98,7 @@ To customize tags,
 * `infra/setup-application/terraform.mars` update values + output from cloud-network automatically
 * `infra/vm/variable.json` update value
 ## Cleaning up
-* `./deploy application-destroy`
-* `./deploy network-destroy`
+* On the root directory run `terraform destroy`
 * Have to delete ami created by packer manually for now
 
 ## Development Mode
