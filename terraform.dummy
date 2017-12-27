@@ -1,10 +1,12 @@
-pre_tag=
+pre_tag="dev"
 platform_name=
-environment=
+environment="development"
 service_name=
 business_region=
-instance_type=
+instance_type="t2.micro"
 ebs_optimized=
 region=
 key_pair=
 aws_region=eu-west-2
+application_name="helloawsnode"
+

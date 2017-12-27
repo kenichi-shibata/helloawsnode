@@ -1,8 +1,0 @@
-pre_tag="dev"
-platform_name="integration"
-environment="development"
-service_name="infra"
-business_region="london"
-instance_type="t2.micro"
-ebs_optimized="no"
-aws_region="eu-west-2"

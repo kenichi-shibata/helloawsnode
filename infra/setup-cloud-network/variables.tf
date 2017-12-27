@@ -21,21 +21,8 @@ variable "business_region" {
   description = "business region for the company separate from aws_region"
 }
 
-variable "instance_type"  {
-  description = "instance type of the first ec2 instance"
-}
-
-variable "ebs_optimized" {
-  description = "instance status"
-}
-
 variable "aws_region" {
   description = "aws region"
   default = "eu-west-2"
-}
-
-variable "key_pair" {
-  description = "aws keypair"
-  default = "id_rsa"
 }
 
